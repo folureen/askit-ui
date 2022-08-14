@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import type { ButtonClick, ButtonType, Size } from "../../types";
 import { BUTTON_TYPE, COLOR, SIZE } from "../common/constants/global";
@@ -8,7 +8,7 @@ type Props = {
   name?: string;
   size?: Size;
   type?: ButtonType;
-  onClick?: ButtonClick;
+  onClick?: (ButtonClick & MouseEventHandler<HTMLButtonElement>) | undefined;
   children?: React.ReactNode;
 };
 

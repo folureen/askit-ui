@@ -24,42 +24,31 @@ export const Default = ({ ...props }) => {
 };
 
 export const Types = ({ ...props }) => {
-  return (
-    <>
-      <Button {...props} type={BUTTON_TYPE.PRIMARY}>
-        Primary
-      </Button>{" "}
-      <Button {...props} type={BUTTON_TYPE.OUTLINE}>
-        Outline
-      </Button>{" "}
-      <Button {...props} type={BUTTON_TYPE.CRITICAL}>
-        Critical
-      </Button>{" "}
-      <Button {...props} type={BUTTON_TYPE.GHOST}>
-        Ghost
-      </Button>
-    </>
-  );
+  const types = [
+    BUTTON_TYPE.PRIMARY,
+    BUTTON_TYPE.OUTLINE,
+    BUTTON_TYPE.CRITICAL,
+    BUTTON_TYPE.GHOST,
+  ];
+
+  return types.map((type) => {
+    return (
+      <div style={{ margin: "5px" }}>
+        <Button {...props} type={type}>
+          {type}
+        </Button>
+      </div>
+    );
+  });
 };
 
 export const Sizes = ({ ...props }) => {
-  return (
-    <>
-      <Button {...props} size={SIZE.S}>
-        Size S
-      </Button>{" "}
-      <Button {...props} size={SIZE.M}>
-        Size M
-      </Button>{" "}
-      <Button {...props} size={SIZE.L}>
-        Size L
-      </Button>{" "}
-      <Button {...props} size={SIZE.XL}>
-        Size XL
-      </Button>{" "}
-      <Button {...props} size={SIZE.XXL}>
-        Size XXL
+  const sizes = [SIZE.XS, SIZE.S, SIZE.M, SIZE.L, SIZE.XL, SIZE.XXL];
+  return sizes.map((size) => {
+    return (
+      <Button {...props} size={size}>
+        {size}
       </Button>
-    </>
-  );
+    );
+  });
 };
