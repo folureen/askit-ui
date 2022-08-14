@@ -1,39 +1,61 @@
 import React from "react";
-import type { ButtonType } from "../../types";
-import { BUTTON_TYPE, COLOR } from "../common/constants/global";
+import styled from "styled-components";
+import type { ButtonClick, ButtonType, Size } from "../../types";
+import { BUTTON_TYPE, COLOR, SIZE } from "../common/constants/global";
 import * as Styled from "./styles";
 
 type Props = {
-  children?: React.ReactNode;
+  name?: string;
+  size?: Size;
   type?: ButtonType;
-  props?: Record<string, string>;
-  backgroundColor?: string;
-  color?: string;
-  onClick?: () => void;
+  onClick?: ButtonClick;
+  children?: React.ReactNode;
+};
+
+const buttonSize = {
+  xs: "5px 14px",
+  s: "6px 16px",
+  m: "7px 18px",
+  l: "8px 20px",
+  xl: "9px 22px",
+  xxl: "10px 24px",
 };
 
 const Button: React.FC<Props> = ({
-  children = null,
-  type = BUTTON_TYPE.DEFAULT,
-  props,
-  backgroundColor = COLOR.PRIMARY,
-  color = COLOR.WHITE,
+  children,
+  size = SIZE.M,
+  name,
+  type = BUTTON_TYPE.PRIMARY,
   onClick,
 }) => {
-  const handleClick = React.useCallback(() => {
-    onClick && onClick();
-  }, []);
+  const defaultProps = {
+    name,
+    onClick: onClick,
+    size: buttonSize[size as keyof typeof buttonSize],
+  };
 
   return (
-    <Styled.Button
-      backgroundColor={backgroundColor}
-      color={color}
-      {...props}
-      onClick={handleClick}
-    >
-      {children}
-    </Styled.Button>
+    <>
+      {type === BUTTON_TYPE.PRIMARY && (
+        <Styled.PrimaryButton {...defaultProps}>
+          {children}
+        </Styled.PrimaryButton>
+      )}
+      {type === BUTTON_TYPE.CRITICAL && (
+        <Styled.CriticalButton {...defaultProps}>
+          {children}
+        </Styled.CriticalButton>
+      )}
+      {type === BUTTON_TYPE.GHOST && (
+        <Styled.GhostButton {...defaultProps}>{children}</Styled.GhostButton>
+      )}
+      {type === BUTTON_TYPE.OUTLINE && (
+        <Styled.OutlineButton {...defaultProps}>
+          {children}
+        </Styled.OutlineButton>
+      )}
+    </>
   );
 };
 
-export default Button;
+export default React.memo(Button);
