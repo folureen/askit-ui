@@ -1,7 +1,7 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import type { ButtonClick, ButtonType, Size } from "../../types";
-import { BUTTON_TYPE, COLOR, SIZE } from "../common/constants/global";
+import { BUTTON_TYPE, COLOR, SIZE } from "../../common/constants/global";
 import * as Styled from "./styles";
 
 type Props = {

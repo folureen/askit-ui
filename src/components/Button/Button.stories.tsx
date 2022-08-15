@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentMeta } from "@storybook/react";
 import Button from "./Button";
-import { BUTTON_TYPE, SIZE } from "../common/constants/global";
+import { BUTTON_TYPE, SIZE } from "../../common/constants/global";
 
 export default {
   title: "components/Button",
@@ -33,11 +33,11 @@ export const Types = ({ ...props }) => {
 
   return types.map((type) => {
     return (
-      <div style={{ margin: "5px" }}>
+      <span style={{ marginRight: "10px" }}>
         <Button {...props} type={type}>
           {type}
         </Button>
-      </div>
+      </span>
     );
   });
 };
@@ -46,9 +46,11 @@ export const Sizes = ({ ...props }) => {
   const sizes = [SIZE.XS, SIZE.S, SIZE.M, SIZE.L, SIZE.XL, SIZE.XXL];
   return sizes.map((size) => {
     return (
-      <Button {...props} size={size}>
-        {size}
-      </Button>
+      <span style={{ marginRight: "10px" }}>
+        <Button {...props} size={size}>
+          {size}
+        </Button>
+      </span>
     );
   });
 };

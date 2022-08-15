@@ -28,6 +28,6 @@ describe("Button", () => {
       fireEvent.click(button);
     }
 
-    expect(handleClick).toHaveBeenCalledTimes(10);
+    expect(handleClick).toHaveBeenCalledTimes(countCalls);
   });
 });

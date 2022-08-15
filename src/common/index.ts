@@ -1,0 +1,1 @@
+export { COLOR, BUTTON_TYPE, SIZE } from './constants/global';
